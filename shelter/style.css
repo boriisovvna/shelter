@@ -187,7 +187,7 @@ nav ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6rem;
+    gap: 6.1rem;
     padding: 8.2rem 0 10rem;
 }
 .pets__text {
@@ -253,6 +253,7 @@ nav ul {
     border-color: transparent;
 }
 .pets__button {
+    text-decoration: none;
     width: 26.1rem;
     height: 5.2rem;
 }
@@ -261,7 +262,7 @@ nav ul {
     flex-direction: column;
     align-items: center;
     gap: 6rem;
-    padding: 8.3rem 0 10rem;
+    padding: 8.1rem 0 10rem;
 }
 .help__content h2 {
     max-width: 15ch;
