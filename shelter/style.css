@@ -42,7 +42,7 @@ html {
 h1 {
     font-family: var(--font-family);
     font-weight: 400;
-    font-size: 4.4rem;
+    font-size: clamp(2.4rem, calc(0.971rem + 4.464vw), 4.4rem);
     line-height: 130%;
     color: var(--color-light-xl);
     max-width: 15ch;
@@ -50,7 +50,7 @@ h1 {
 h2 {
     font-family: var(--font-family);
     font-weight: 400;
-    font-size: 3.5rem;
+    font-size: clamp(2.4rem, calc(1.614rem + 2.455vw), 3.5rem);
     line-height: 130%;
     letter-spacing: 0.06em;
     color: var(--color-dark-l);   
@@ -116,6 +116,14 @@ nav ul {
 .header__nav_inactive a:hover {
     color: var(--color-light-s);
 }
+.burger-menu {
+    display: none;
+}
+.burger-menu span {
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-primary);
+}
 .start-screen__content {
     display: flex;
     flex-wrap: wrap;
@@ -167,11 +175,14 @@ nav ul {
 }
 .about__content {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 12rem;
     padding: 8rem 0 9.5rem;
+}
+.about__img img {
+    max-width: 100%;
+    height: auto;
 }
 .about__text {
     max-width: 85ch;
@@ -210,6 +221,13 @@ nav ul {
 .slider__content {
     display: flex;
     gap: 9rem;
+    order: 1;
+}
+.slider__button--prev {
+    order: 0;
+}
+.slider__button--next {
+    order: 2;
 }
 .slider__card {
     display: flex;
@@ -271,7 +289,7 @@ nav ul {
     flex-direction: column;
     align-items: center;
     gap: 6rem;
-    padding: 8.1rem 0 10rem;
+    padding: 8rem 0 10rem;
 }
 .help__content h2 {
     max-width: 15ch;
@@ -310,6 +328,9 @@ nav ul {
     justify-content: center;
     align-items: center;
     gap: 2.8rem;
+}
+.donation__img img {
+    max-width: 100%;
 }
 .donation__text {
     display: flex;
@@ -406,23 +427,46 @@ nav ul {
     height: 32px;
     flex-shrink: 0;
 }
-
-@media (max-width: 768px) {
-    .container {
-        max-width: 92%;
+.footer__img img {
+    max-width: 100%;
+}
+@media (max-width: 1200px) {
+    .slider__card:nth-child(3) {
+        display: none;
     }
+}
+@media (max-width: 1188px) {
     .start-screen__content {
         justify-content: center;
-        padding-top: 4.7rem;
+        padding-top: 5rem;
+        gap: 10.2rem;
     }
     .start-screen__link-button {
         align-self: center;
     }
     .start-screen__img {
-        width: 82%;
+        width: 80%;
         margin-left: auto;
+        padding-top: 0;
+    }
+}
+@media (max-width: 938px) {
+    .donation__content {
+        gap: 6rem;
+    }
+    .donation__text {
+        order: 0;
+    }
+    .donation__img {
+        order: 1;
+    }
+}
+@media (max-width: 836px) {
+    .container {
+        max-width: 92%;
     }
     .about__content {
+        flex-wrap: wrap;
         gap: 8rem;
     }
     .about__text {
@@ -434,24 +478,158 @@ nav ul {
     .pets__slider {
         gap: 1rem;
     }
-    .slider__card_inactive {
-        display: none;
-    }
     .slider__content {
         gap: 4rem;
     }
-    .donation__content {
-        gap: 6rem;
+    .help__list {
+        gap: 5.3rem 6rem;
     }
-    .donation__text {
-        order: 0;
-    }
-    .donation__img {
-        order: 1;
+    .help__item {
+        width: 17rem;
     }
     .footer__content {
-        padding-top: 1.5rem;
+        padding-top: 1rem;
         justify-content: center;
         gap: 6rem;
+    }
+}
+@media (max-width: 767px) {
+    .nav {
+        display: none;
+    }
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .slider__card:nth-child(2) {
+        display: none;
+    }
+}
+@media (max-width: 400px) {
+    .slider__content {
+        order: 0;
+    }
+    .pets__slider {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.2rem 8rem;
+    }
+    .footer__content {
+        padding: 3.2rem 0 0;
+        gap: 4rem;
+    }
+    .footer__contacts,
+    .footer__locations {
+        padding-top: 0;
+    }
+    .footer__contacts {
+        align-items: center;
+    }
+    .footer__locations {
+        gap: 4rem;
+        align-items: flex-start;
+    }
+    .footer__contacts h2,
+    .footer__locations h2 {
+        max-width: 17ch;
+        align-self: center;
+    }
+    .footer__pin--top, 
+    .footer__pin--bottom {
+        gap: 1rem;
+    }
+    .footer__pin--top span {
+        letter-spacing: 0.05em;
+    }
+    .footer__img {
+        width: 93%;
+    }    
+}
+@media (max-width: 320px) {
+    .container {
+        max-width: 88%;
+    }
+    h1,
+    h2 {
+        letter-spacing: 0.07em;
+        text-align: center
+    }
+    .logo__text {
+        letter-spacing: 0.12em;
+    }
+    .start-screen__content {
+        padding-top: 5.2rem;
+    }
+    .start-screen__text {
+        align-items: center;
+        text-align: center;
+    }
+    .start-screen__text p {
+        font-size: 1.45rem;
+        line-height: 166%
+    }
+    .start-screen__img {
+        width: 93%;
+    }
+    .about__content {
+        padding: 4.2rem 0;
+        gap: 4.3rem;
+    }
+    .about__text {
+        align-items: center;
+    }
+    .about__text p {
+        max-width: 32ch;
+        text-align: justify;
+    }
+    .about__img {
+        width: 91%;
+    }
+    .pets__content {
+        padding: 4.5rem 0 4rem;
+        gap: 4rem;
+    }
+    .help__content {
+        padding: 4.5rem 0 4rem;
+        gap: 4.2rem;
+    }
+    .help__list {
+        gap: 3.1rem 4rem;
+        justify-content: flex-start;
+    }
+    .help__item {
+        width: 12rem;
+        height: 8.7rem;
+        gap: 2rem;
+    }
+    .help__item img {
+        width: 5rem;
+        height: 5rem;
+    }
+    .help__item p {
+        font-size: 1.5rem;
+        line-height: 110%;
+    }
+    .donation__content {
+        padding: 4.2rem 0;
+        gap: 4.2rem;
+    }
+    .donation__img {
+        width: 92%;
+    }
+    .donation__text {
+        align-items: center;
+    }
+    .donation__subtext-title {
+        letter-spacing: 0;
+        line-height: 160%;
+    }
+    .credit-card__number span {
+        font-size: 1.4rem;
+        line-height: 110%;
+    }
+    .donation__subtext {
+        text-align: justify;
     }
 }
