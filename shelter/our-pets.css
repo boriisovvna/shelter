@@ -42,7 +42,7 @@ html {
 h1 {
     font-family: var(--font-family);
     font-weight: 400;
-    font-size: clamp(2.5rem, 2.7vw, 3.5rem);
+    font-size: clamp(2.4rem, calc(1.614rem + 2.455vw), 3.5rem);
     line-height: 130%;
     letter-spacing: 0.06em;
     text-align: center;
@@ -51,7 +51,7 @@ h1 {
 h2 {
     font-family: var(--font-family);
     font-weight: 400;
-    font-size: 3.5rem;
+    font-size: clamp(2.4rem, calc(1.614rem + 2.455vw), 3.5rem);
     line-height: 130%;
     letter-spacing: 0.06em;
     color: var(--color-light-xl);
@@ -111,6 +111,14 @@ nav ul {
 .header__nav_inactive a:hover {
     color: var(--color-dark-3xl);
 }
+.burger-menu {
+    display: none;
+}
+.burger-menu span {
+    width: 30px;
+    height: 2px;
+    background-color: #000;
+}
 .our-pets {
     background-color: var(--color-light-l);
 }
@@ -123,8 +131,10 @@ nav ul {
     padding: 8rem 0 10rem;
 }
 .our-pets__cards {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, 270px);
+    justify-content: center;
     gap: 3rem 4rem;
 }
 .our-pets__card {
@@ -213,6 +223,7 @@ nav ul {
 .footer__content {
     padding-top: 4rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .footer__contacts,
@@ -258,4 +269,98 @@ nav ul {
     width: 22px;
     height: 32px;
     flex-shrink: 0;
+}
+.footer__img img {
+    max-width: 100%;
+}
+
+@media (max-width: 1231px) {
+    .our-pets__card:nth-last-child(-n + 2) {
+        display: none;
+    }
+}
+@media (max-width: 921px) {
+    .our-pets__card:nth-last-child(-n + 4) {
+        display: none;
+    }
+    .footer__content {
+        padding-top: 1rem;
+        justify-content: center;
+        gap: 6rem;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        max-width: 92%;
+    }
+    .our-pets__content {
+        gap: 3rem;
+        padding-bottom: 8rem;
+    }
+    .our-pets__nav {
+        margin-top: 1rem;
+    }
+}
+@media (max-width: 767px) {
+    .nav {
+        display: none;
+    }
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+@media (max-width: 630px) {
+    .our-pets__card:nth-last-child(-n + 5) {
+        display: none;
+    }
+    .footer__content {
+        padding: 3.2rem 0 0;
+        gap: 4rem;
+    }
+    .footer__contacts,
+    .footer__locations {
+        padding-top: 0;
+    }
+    .footer__contacts {
+        align-items: center;
+    }
+    .footer__locations {
+        gap: 4rem;
+        align-items: flex-start;
+    }
+    .footer__contacts h2,
+    .footer__locations h2 {
+        max-width: 17ch;
+        align-self: center;
+    }
+    .footer__pin--top, 
+    .footer__pin--bottom {
+        gap: 1rem;
+    }
+    .footer__pin--top span {
+        letter-spacing: 0.05em;
+    }
+    .footer__img {
+        width: 93%;
+    }    
+}
+@media (max-width: 320px) {
+    .container {
+        max-width: 88%;
+    }
+    h1,
+    h2 {
+        letter-spacing: 0.07em;
+        text-align: center
+    }
+    .our-pets__content {
+        padding: 4.5rem 0 4rem;
+        gap: 4rem;
+    }
+    .our-pets__nav {
+        margin-top: 0.7rem;
+        gap: 1rem;
+    }
 }
