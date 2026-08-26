@@ -280,9 +280,6 @@ nav ul {
     }
 }
 @media (max-width: 921px) {
-    .our-pets__card:nth-last-child(-n + 4) {
-        display: none;
-    }
     .footer__content {
         padding-top: 1rem;
         justify-content: center;
